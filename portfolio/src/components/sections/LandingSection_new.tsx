@@ -102,7 +102,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
     return {
       greeting: "Hi there!",
       title: "I'm Lino",
-      description: 'I’m an AI engineer. I design innovative solutions and automated systems that help companies scale. I believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
+      description: 'I'm an AI engineer. I design innovative solutions and automated systems that help companies scale. I believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
       viewProjects: 'View Projects',
       getResume: 'Get My Resume',
       development: 'Development',
@@ -138,9 +138,9 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
 
       <div className="relative z-10 px-4 max-w-7xl mx-auto">
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 items-center mb-16">
           {/* Left Column - Text Content */}
-          <div className="text-center lg:text-left lg:pl-8">
+          <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,11 +190,11 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center lg:justify-end lg:pr-8"
+            className="flex justify-center lg:justify-end"
           >
             <div className="relative group">
               {/* Video Container */}
-              <div className="relative w-64 h-96 md:w-72 md:h-[28rem] lg:w-68 lg:h-[26rem] xl:w-72 xl:h-[28rem] overflow-hidden shadow-2xl border border-border/50">
+              <div className="relative w-56 h-80 md:w-64 md:h-96 lg:w-60 lg:h-80 xl:w-64 xl:h-96 overflow-hidden shadow-2xl border border-border/50">
                 <iframe
                   ref={videoRef}
                   src={getVideoUrl()}
@@ -229,10 +229,9 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
                 <div className="absolute inset-0 ring-1 ring-primary/20 pointer-events-none" />
               </div>
 
-              {/* Enhanced Green Glow Effect */}
-              <div className="absolute inset-0 -z-10 bg-primary/40 blur-2xl scale-125 opacity-80" />
-              <div className="absolute inset-0 -z-20 bg-primary/30 blur-3xl scale-150 opacity-60" />
-              <div className="absolute inset-0 -z-30 bg-primary/20 blur-[60px] scale-[2] opacity-40" />
+              {/* Green Glow Effect */}
+              <div className="absolute inset-0 -z-10 bg-primary/30 blur-xl scale-110 opacity-60" />
+              <div className="absolute inset-0 -z-20 bg-primary/20 blur-2xl scale-125 opacity-40" />
             </div>
           </motion.div>
         </div>
@@ -242,7 +241,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
         >
           <div 
             onClick={() => onSectionChange('projects')}

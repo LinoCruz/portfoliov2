@@ -1,53 +1,37 @@
-import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Moon, Sun, Languages } from 'lucide-react';
+import { ThemeToggle } from './common/ThemeToggle';
+import { LanguageSwitch } from './common/LanguageSwitch';
+import { useTheme } from '../hooks/useTheme';
+import { Language, navigationTranslations, t } from '../utils/i18n';
 
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
-  language: string;
-  onLanguageChange: (lang: string) => void;
+  language: Language;
+  onLanguageChange: (lang: Language) => void;
   activeSection?: string;
   onSectionChange?: (section: string) => void;
 }
 
 export function Navigation({ currentPage, onPageChange, language, onLanguageChange }: NavigationProps) {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const isDarkMode = localStorage.getItem('theme') === 'dark' || 
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    setIsDark(isDarkMode);
-    document.documentElement.classList.toggle('dark', isDarkMode);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
-
-  const toggleLanguage = () => {
-    const newLanguage = language === 'en' ? 'es' : 'en';
-    onLanguageChange(newLanguage);
-  };
-
-  const getBusinessButtonText = () => {
-    return language === 'en' ? 'Business Automation' : 'Automatización de Negocios';
-  };
+  const { isDark, toggleTheme } = useTheme();
 
   const getPortfolioText = () => {
-    return language === 'en' ? (
-      <>
-        lino<span className="special-chars">@</span>portfolio<span className="special-chars">:~$</span>
-      </>
-    ) : (
+    if (language === 'en') {
+      return (
+        <>
+          lino<span className="special-chars">@</span>portfolio<span className="special-chars">:~$</span>
+        </>
+      );
+    }
+    return (
       <>
         lino<span className="special-chars">@</span>portafolio<span className="special-chars">:~$</span>
       </>
     );
   };
+
+  const businessButtonText = t(navigationTranslations, 'businessAutomation', language);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border/50">
@@ -70,29 +54,14 @@ export function Navigation({ currentPage, onPageChange, language, onLanguageChan
               onClick={() => onPageChange(currentPage === 'automation' ? 'home' : 'automation')}
               className="bg-primary text-primary-foreground hover:bg-primary/90 neon-glow px-4 py-2"
             >
-              {getBusinessButtonText()}
+              {businessButtonText}
             </Button>
 
             {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="p-2 hover:bg-muted/50"
-            >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
 
             {/* Language Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="p-2 hover:bg-muted/50 flex items-center space-x-1"
-            >
-              <Languages className="h-4 w-4" />
-              <span className="text-xs uppercase">{language}</span>
-            </Button>
+            <LanguageSwitch language={language} onLanguageChange={onLanguageChange} />
           </div>
         </div>
       </div>

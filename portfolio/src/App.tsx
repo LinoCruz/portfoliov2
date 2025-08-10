@@ -1,34 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Navigation } from './components/Navigation';
 import { LandingSection } from './components/sections/LandingSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
 import { VideosSection } from './components/sections/VideosSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { AutomationPage } from './components/AutomationPage';
+import { useLanguage } from './hooks/useLanguage';
+import { useScrollTo } from './hooks/useScrollTo';
+import { useActiveSection } from './hooks/useActiveSection';
+import { footerTranslations, t } from './utils/i18n';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('home'); // Used for scroll tracking
   const [currentPage, setCurrentPage] = useState('home');
-  const [language, setLanguage] = useState('en');
-
-  // Initialize language from localStorage
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setLanguage(savedLanguage);
-  }, []);
+  const { language, changeLanguage } = useLanguage();
+  const { scrollToSection, scrollToTop } = useScrollTo();
+  const { activeSection, setActiveSection } = useActiveSection(currentPage);
 
   // Handle section changes and smooth scrolling
   const handleSectionChange = (section: string) => {
     setActiveSection(section);
-    
-    // Smooth scroll to section
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    scrollToSection(section);
   };
 
   // Handle page changes
@@ -37,38 +28,8 @@ export default function App() {
     if (page === 'home') {
       setActiveSection('home');
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop();
   };
-
-  // Handle language changes
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
-  };
-
-  // Update active section based on scroll position (only for home page)
-  useEffect(() => {
-    if (currentPage !== 'home') return;
-
-    const handleScroll = () => {
-      const sections = ['home', 'projects', 'videos', 'contact'];
-      const scrollPosition = window.scrollY + 100; // Offset for navigation
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
 
   // Render different pages
   const renderCurrentPage = () => {
@@ -103,17 +64,10 @@ export default function App() {
   };
 
   const getFooterText = () => {
-    if (language === 'es') {
-      return {
-        portfolio: 'Gracias por visitar mi portafolio',
-        built: 'Construido con React, TypeScript y Tailwind CSS. Hecho con amor, creatividad y mucho café.',
-        rights: 'Todos los derechos reservados.'
-      };
-    }
     return {
-      portfolio: 'Thank you for visiting my portfolio',
-      built: 'Built with React, TypeScript, and Tailwind CSS. Made with love, creativity, and a high dose of caffeine.',
-      rights: 'All rights reserved.'
+      portfolio: t(footerTranslations, 'portfolio', language),
+      built: t(footerTranslations, 'built', language),
+      rights: t(footerTranslations, 'rights', language)
     };
   };
 
@@ -126,7 +80,7 @@ export default function App() {
         currentPage={currentPage}
         onPageChange={handlePageChange}
         language={language}
-        onLanguageChange={handleLanguageChange}
+        onLanguageChange={changeLanguage}
         activeSection={activeSection}
         onSectionChange={handleSectionChange}
       />

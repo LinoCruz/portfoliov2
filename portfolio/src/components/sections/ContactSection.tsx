@@ -27,7 +27,7 @@ export function ContactSection({ language }: ContactSectionProps) {
   const getText = () => {
     if (language === 'es') {
       return {
-        title: '¡Pongámonos en Contacto!',
+        title: '¡Pongámonos en contacto!',
         subtitle: '¿Listo para comenzar tu próximo proyecto? Descarga mi CV y envíame un mensaje para discutir cómo podemos trabajar juntos.',
         resumeTitle: 'Mi CV',
         resumeDescription: 'Descripción completa de mi experiencia, habilidades y logros en desarrollo de software y automatización.',
@@ -50,7 +50,7 @@ export function ContactSection({ language }: ContactSectionProps) {
       };
     }
     return {
-      title: 'Let’s get in Touch!',
+      title: 'Let’s get in touch!',
       subtitle: 'Ready to start your next project? Download my resume and send me a message to discuss how we can work together.',
       resumeTitle: 'My Resume',
       resumeDescription: 'Complete overview of my experience, skills, and achievements in software development and automation.',
@@ -99,7 +99,7 @@ export function ContactSection({ language }: ContactSectionProps) {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="mb-4">
+        <h2 className="mb-4 text-5xl ">
           <span className="gradient-text">{text.title}</span>
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
