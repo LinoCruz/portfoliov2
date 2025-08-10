@@ -11,6 +11,8 @@ interface LandingSectionProps {
 export function LandingSection({ onSectionChange, language }: LandingSectionProps) {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
   const videoRef = useRef<HTMLIFrameElement>(null);
 
   // Enable YouTube API when component mounts
@@ -88,7 +90,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
       return {
         greeting: '¡Saludos!',
         title: 'Soy Lino',
-        description: 'Soy ingeniero de IA. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar. Creo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
+        description: 'Soy ingeniero de IA. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar.\n\nCreo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
         viewProjects: 'Ver Proyectos',
         getResume: 'Obtener mi CV',
         development: 'Desarrollo',
@@ -102,7 +104,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
     return {
       greeting: "Hi there!",
       title: "I'm Lino",
-      description: 'I’m an AI engineer. I design innovative solutions and automated systems that help companies scale. I believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
+      description: 'I\'m an AI engineer. I design innovative solutions and automated systems that help companies scale.\n\nI believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
       viewProjects: 'View Projects',
       getResume: 'Get My Resume',
       development: 'Development',
@@ -115,6 +117,39 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
   };
 
   const text = getText();
+  
+  // Typewriter effect for description
+  useEffect(() => {
+    let timeoutId: number;
+    let currentIndex = 0;
+    const fullText = text.description;
+    
+    const typeWriter = () => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.substring(0, currentIndex));
+        currentIndex++;
+        timeoutId = setTimeout(typeWriter, 30); // Typing speed
+      } else {
+        // Typing is complete
+        setIsTypingComplete(true);
+      }
+    };
+
+    // Reset and start typing effect
+    setDisplayedText('');
+    setIsTypingComplete(false);
+    currentIndex = 0;
+    
+    timeoutId = setTimeout(typeWriter, 1000); // Initial delay
+
+    // Cleanup timeout on component unmount or language change
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [text.description]); // Re-run when description changes (language change)
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
@@ -137,35 +172,26 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
       />
 
       <div className="relative z-10 px-4 max-w-7xl mx-auto">
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          {/* Left Column - Text Content */}
-          <div className="text-center lg:text-left lg:pl-8">
+        {/* Main Content Grid - 3 Columns */}
+        <div className="grid lg:grid-cols-3 gap-8 items-center">
+          {/* Left Column - Greeting and Title */}
+          <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <h1 className="mb-6">
-                <span className="block mb-2 text-2xl md:text-3xl">{text.greeting}</span>
-                <span className="gradient-text block text-6xl md:text-8xl pb-4">{text.title}</span>
+                <span className="block mb-3 text-3xl md:text-4xl lg:text-5xl">{text.greeting}</span>
+                <span className="gradient-text block text-6xl md:text-7xl lg:text-8xl pb-4">{text.title}</span>
               </h1>
             </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto lg:mx-0"
-            >
-              {text.description}
-            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start"
             >
               <Button
                 onClick={() => onSectionChange('projects')}
@@ -174,27 +200,19 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
                 <Code className="w-4 h-4 mr-2" />
                 {text.viewProjects}
               </Button>
-              <Button
-                variant="outline"
-                onClick={() => onSectionChange('contact')}
-                className="border-primary text-primary hover:bg-primary/10 px-8 py-3"
-              >
-                <FileText className="w-4 h-4 mr-2" />
-                {text.getResume}
-              </Button>
             </motion.div>
           </div>
 
-          {/* Right Column - Video */}
+          {/* Center Column - Video */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center lg:justify-end lg:pr-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center"
           >
             <div className="relative group">
               {/* Video Container */}
-              <div className="relative w-64 h-96 md:w-72 md:h-[28rem] lg:w-68 lg:h-[26rem] xl:w-72 xl:h-[28rem] overflow-hidden shadow-2xl border border-border/50">
+              <div className="relative w-68 h-96 md:w-80 md:h-[28rem] lg:w-70 lg:h-[26rem] xl:w-78 xl:h-[28rem] overflow-hidden shadow-2xl border border-border/50">
                 <iframe
                   ref={videoRef}
                   src={getVideoUrl()}
@@ -235,6 +253,44 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
               <div className="absolute inset-0 -z-30 bg-primary/20 blur-[60px] scale-[2] opacity-40" />
             </div>
           </motion.div>
+
+          {/* Right Column - Description and Resume Button */}
+          <div className="text-center lg:text-right">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-8"
+            >
+              {/* Console/Terminal Style Description */}
+              <div className="glass-effect rounded-lg p-6 border border-border/50">
+                {/* Terminal Content */}
+                <div className="font-mono text-sm lg:text-base text-primary/90 leading-relaxed text-justify lg:text-right">
+                  <span className="text-green-400">$</span> <span className="text-blue-400">cat</span> <span className="text-yellow-400">about_lino.txt</span>
+                  <div className="mt-3 text-foreground whitespace-pre-wrap">
+                    {displayedText}
+                    {!isTypingComplete && <span className="animate-pulse text-primary">█</span>}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <Button
+                variant="outline"
+                onClick={() => onSectionChange('contact')}
+                className="border-primary text-primary hover:bg-primary/10 px-8 py-3"
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                {text.getResume}
+              </Button>
+            </motion.div>
+          </div>
         </div>
 
         {/* Feature Cards - Below the main content */}

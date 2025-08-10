@@ -27,7 +27,7 @@ export const landingTranslations: Translations = {
   },
   getResume: {
     en: 'Get My Resume',
-    es: 'Obtener mi CV'
+    es: 'Ver mi CV'
   },
   development: {
     en: 'Development',
