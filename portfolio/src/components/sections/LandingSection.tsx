@@ -11,31 +11,29 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
   const getText = () => {
     if (language === 'es') {
       return {
-        greeting: 'Hola, soy',
-        title: 'Tu Desarrollador',
-        subtitle: 'Construyendo el Futuro con Código e Innovación',
-        description: 'Creo soluciones innovadoras, contenido educativo y sistemas de automatización que empoderan a empresas y desarrolladores en todo el mundo.',
+        greeting: '¡Saludos!',
+        title: 'Soy Lino',
+        description: 'Soy ingeniero de IA. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar. Creo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
         viewProjects: 'Ver Proyectos',
         getResume: 'Obtener mi CV',
         development: 'Desarrollo',
         developmentDesc: 'Soluciones full-stack con tecnologías modernas',
-        education: 'Educación',
-        educationDesc: 'Tutoriales y contenido para ayudar a otros a aprender',
+        education: 'Tutoriales',
+        educationDesc: 'Videos y contenido para ayudar a otros desarrolladores a aprender',
         professional: 'Profesional',
         professionalDesc: 'CV detallado y portafolio de proyectos'
       };
     }
     return {
-      greeting: "Hi, I'm",
-      title: 'Your Developer',
-      subtitle: 'Building the Future with Code & Innovation',
-      description: 'I create innovative solutions, educational content, and automation systems that empower businesses and developers worldwide.',
+      greeting: "Hi there!",
+      title: "I'm Lino",
+      description: 'I’m an AI engineer. I design innovative solutions and automated systems that help companies scale. I believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
       viewProjects: 'View Projects',
       getResume: 'Get My Resume',
       development: 'Development',
       developmentDesc: 'Full-stack solutions with modern technologies',
-      education: 'Education',
-      educationDesc: 'Tutorials and content to help others learn',
+      education: 'Tutorials',
+      educationDesc: 'Videos and content to help other developers learn',
       professional: 'Professional',
       professionalDesc: 'Detailed resume and portfolio showcase'
     };
@@ -71,10 +69,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
         >
           <h1 className="mb-6">
             <span className="block mb-2">{text.greeting}</span>
-            <span className="gradient-text block">{text.title}</span>
-            <span className="block text-xl md:text-2xl text-muted-foreground mt-4">
-              {text.subtitle}
-            </span>
+            <span className="gradient-text block text-8xl pb-4">{text.title}</span>
           </h1>
         </motion.div>
 
@@ -117,18 +112,27 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
           transition={{ duration: 0.8, delay: 0.6 }}
           className="grid md:grid-cols-3 gap-6 mb-12"
         >
-          <div className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300">
-            <Code className="w-8 h-8 text-primary mb-4 mx-auto" />
+          <div 
+            onClick={() => onSectionChange('projects')}
+            className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300 cursor-pointer group hover:scale-105 transform transition-transform"
+          >
+            <Code className="w-8 h-8 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform" />
             <h3 className="mb-2">{text.development}</h3>
             <p className="text-muted-foreground">{text.developmentDesc}</p>
           </div>
-          <div className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300">
-            <Video className="w-8 h-8 text-primary mb-4 mx-auto" />
+          <div 
+            onClick={() => onSectionChange('videos')}
+            className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300 cursor-pointer group hover:scale-105 transform transition-transform"
+          >
+            <Video className="w-8 h-8 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform" />
             <h3 className="mb-2">{text.education}</h3>
             <p className="text-muted-foreground">{text.educationDesc}</p>
           </div>
-          <div className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300">
-            <FileText className="w-8 h-8 text-primary mb-4 mx-auto" />
+          <div 
+            onClick={() => onSectionChange('contact')}
+            className="glass-effect rounded-lg p-6 border border-border/50 hover:border-primary/50 transition-colors duration-300 cursor-pointer group hover:scale-105 transform transition-transform"
+          >
+            <FileText className="w-8 h-8 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform" />
             <h3 className="mb-2">{text.professional}</h3>
             <p className="text-muted-foreground">{text.professionalDesc}</p>
           </div>

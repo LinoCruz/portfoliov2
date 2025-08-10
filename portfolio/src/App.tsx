@@ -105,14 +105,14 @@ export default function App() {
   const getFooterText = () => {
     if (language === 'es') {
       return {
-        portfolio: 'Portafolio',
-        built: 'Construido con React, TypeScript y Tailwind CSS. Impulsado por creatividad y cafeína.',
+        portfolio: 'Gracias por visitar mi portafolio',
+        built: 'Construido con React, TypeScript y Tailwind CSS. Hecho con amor, creatividad y mucho café.',
         rights: 'Todos los derechos reservados.'
       };
     }
     return {
-      portfolio: 'Portfolio',
-      built: 'Built with React, TypeScript, and Tailwind CSS. Powered by creativity and caffeine.',
+      portfolio: 'Thank you for visiting my portfolio',
+      built: 'Built with React, TypeScript, and Tailwind CSS. Made with love, creativity, and a high dose of caffeine.',
       rights: 'All rights reserved.'
     };
   };
@@ -143,7 +143,7 @@ export default function App() {
               {footerText.built}
             </p>
             <p className="text-muted-foreground text-xs mt-2">
-              © 2024 Your Name. {footerText.rights}
+              © 2024 Lino Cruz. {footerText.rights}
             </p>
           </div>
         </footer>

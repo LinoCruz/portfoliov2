@@ -17,13 +17,63 @@ interface ContactSectionProps {
   language: string;
 }
 
-export function ContactSection({ language: _language }: ContactSectionProps) {
-  // TODO: Implement language support for contact form
+export function ContactSection({ language }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+
+  const getText = () => {
+    if (language === 'es') {
+      return {
+        title: '¡Pongámonos en Contacto!',
+        subtitle: '¿Listo para comenzar tu próximo proyecto? Descarga mi CV y envíame un mensaje para discutir cómo podemos trabajar juntos.',
+        resumeTitle: 'Mi CV',
+        resumeDescription: 'Descripción completa de mi experiencia, habilidades y logros en desarrollo de software y automatización.',
+        downloadResume: 'Descargar CV (PDF)',
+        sendMessage: 'Enviar un Mensaje',
+        sendMessageDesc: '¿Tienes un proyecto en mente? Hablemos sobre cómo podemos trabajar juntos. Te responderé en menos de 24 horas.',
+        yourName: 'Tu Nombre',
+        emailAddress: 'Dirección de Email',
+        message: 'Mensaje',
+        messagePlaceholder: 'Cuéntame sobre tu proyecto, cronograma y cualquier requisito específico...',
+        sendBtn: 'Enviar Mensaje',
+        responseGuarantee: '⚡ Garantía de Respuesta Rápida',
+        responseDesc: 'Normalmente respondo a todas las consultas en menos de 24 horas. Para proyectos urgentes, siéntete libre de llamar o enviar un email directamente.',
+        stats: {
+          projects: 'Proyectos Completados',
+          experience: 'Años de Experiencia',
+          technologies: 'Tecnologías',
+          satisfaction: 'Satisfacción del Cliente'
+        }
+      };
+    }
+    return {
+      title: 'Let’s get in Touch!',
+      subtitle: 'Ready to start your next project? Download my resume and send me a message to discuss how we can work together.',
+      resumeTitle: 'My Resume',
+      resumeDescription: 'Complete overview of my experience, skills, and achievements in software development and automation.',
+      downloadResume: 'Download Resume (PDF)',
+      sendMessage: 'Send a Message',
+      sendMessageDesc: 'Have a project in mind? Let\'s discuss how we can work together. I\'ll get back to you within 24 hours.',
+      yourName: 'Your Name',
+      emailAddress: 'Email Address',
+      message: 'Message',
+      messagePlaceholder: 'Tell me about your project, timeline, and any specific requirements...',
+      sendBtn: 'Send Message',
+      responseGuarantee: '⚡ Quick Response Guarantee',
+      responseDesc: 'I typically respond to all inquiries within 24 hours. For urgent projects, feel free to call or email directly.',
+      stats: {
+        projects: 'Projects Completed',
+        experience: 'Years Experience',
+        technologies: 'Technologies',
+        satisfaction: 'Client Satisfaction'
+      }
+    };
+  };
+
+  const text = getText();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,10 +100,10 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="mb-4">
-          <span className="gradient-text">Get in Touch</span>
+          <span className="gradient-text">{text.title}</span>
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Ready to start your next project? Download my resume and send me a message to discuss how we can work together.
+          {text.subtitle}
         </p>
       </motion.div>
 
@@ -73,9 +123,9 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
                 <FileText className="w-8 h-8 text-primary" />
                 <Sparkles className="w-5 h-5 text-primary ml-2" />
               </div>
-              <CardTitle className="text-2xl mb-2">My Resume</CardTitle>
+              <CardTitle className="text-2xl mb-2">{text.resumeTitle}</CardTitle>
               <CardDescription className="text-base">
-                Complete overview of my experience, skills, and achievements in software development and automation.
+                {text.resumeDescription}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -102,19 +152,19 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
                   <div className="text-lg text-primary">50+</div>
-                  <div className="text-xs text-muted-foreground">Projects Completed</div>
+                  <div className="text-xs text-muted-foreground">{text.stats.projects}</div>
                 </div>
                 <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
                   <div className="text-lg text-primary">3+</div>
-                  <div className="text-xs text-muted-foreground">Years Experience</div>
+                  <div className="text-xs text-muted-foreground">{text.stats.experience}</div>
                 </div>
                 <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
                   <div className="text-lg text-primary">15+</div>
-                  <div className="text-xs text-muted-foreground">Technologies</div>
+                  <div className="text-xs text-muted-foreground">{text.stats.technologies}</div>
                 </div>
                 <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
                   <div className="text-lg text-primary">100%</div>
-                  <div className="text-xs text-muted-foreground">Client Satisfaction</div>
+                  <div className="text-xs text-muted-foreground">{text.stats.satisfaction}</div>
                 </div>
               </div>
 
@@ -126,16 +176,16 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
               >
                 <a href="/resume.pdf" download="YourName_Resume.pdf">
                   <Download className="w-5 h-5 mr-2" />
-                  Download Resume (PDF)
+                  {text.downloadResume}
                 </a>
               </Button>
 
               {/* Additional Info */}
               <div className="text-center text-sm text-muted-foreground space-y-1">
-                <p>📧 hello@yourname.dev</p>
-                <p>📱 +1 (555) 123-4567</p>
-                <p>🕒 Available Mon-Fri, 9AM-6PM PST</p>
-                <p>📍 San Francisco, CA</p>
+                <p>📧 linoeduardocd@gmail.com</p>
+                <p>📱 +51 943476578</p>
+                <p>🕒 Available Mon-Sat, 9AM-8PM CST</p>
+                <p>📍 cix, PE</p>
               </div>
             </CardContent>
           </Card>
@@ -152,49 +202,49 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Send className="w-5 h-5 mr-2 text-primary" />
-                Send a Message
+                {text.sendMessage}
               </CardTitle>
               <CardDescription>
-                Have a project in mind? Let's discuss how we can work together. I'll get back to you within 24 hours.
+                {text.sendMessageDesc}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name">Your Name</Label>
+                  <Label htmlFor="name">{text.yourName}</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Lino Cruz"
                     required
                     className="mt-2"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label htmlFor="email">{text.emailAddress}</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="linoeduardocd@gmail.com"
                     required
                     className="mt-2"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">{text.message}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell me about your project, timeline, and any specific requirements..."
+                    placeholder={text.messagePlaceholder}
                     required
                     rows={8}
                     className="mt-2"
@@ -207,16 +257,15 @@ export function ContactSection({ language: _language }: ContactSectionProps) {
                   size="lg"
                 >
                   <Send className="w-4 h-4 mr-2" />
-                  Send Message
+                  {text.sendBtn}
                 </Button>
               </form>
 
               {/* Quick Response Promise */}
               <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
-                <h4 className="text-primary mb-2">⚡ Quick Response Guarantee</h4>
+                <h4 className="text-primary mb-2">{text.responseGuarantee}</h4>
                 <p className="text-sm text-muted-foreground">
-                  I typically respond to all inquiries within 24 hours. For urgent projects, 
-                  feel free to call or email directly.
+                  {text.responseDesc}
                 </p>
               </div>
             </CardContent>

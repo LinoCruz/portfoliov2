@@ -34,7 +34,7 @@ export function Navigation({ currentPage, onPageChange, language, onLanguageChan
   };
 
   const getBusinessButtonText = () => {
-    return language === 'en' ? 'Business Solutions' : 'Soluciones de Negocio';
+    return language === 'en' ? 'Business Automation' : 'Automatización de Negocios';
   };
 
   const getPortfolioText = () => {

@@ -103,6 +103,18 @@ const projects = [
     stars: 54,
     forks: 18,
     featured: false
+  },
+  {
+    id: 9,
+    title: 'Business Automation Suite',
+    description: 'Comprehensive business automation platform with workflow management, data processing, and AI-powered insights for enterprise operations.',
+    descriptionEs: 'Suite integral de automatización empresarial con gestión de flujos de trabajo, procesamiento de datos e insights impulsados por IA para operaciones empresariales.',
+    technologies: ['Python', 'Django', 'Celery', 'PostgreSQL', 'React', 'OpenAI'],
+    githubUrl: 'https://github.com/yourusername/business-automation',
+    liveUrl: 'https://your-automation-demo.com',
+    stars: 156,
+    forks: 42,
+    featured: true
   }
 ];
 
@@ -146,7 +158,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h1 className="mb-4 text-primary text-5xl md:text-6xl font-bold">
+        <h1 className="mb-4 text-primary text-5xl md:text-6xl">
           {text.title}
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -155,7 +167,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
       </motion.div>
 
       {/* Featured Projects Grid */}
-      <div className="grid lg:grid-cols-2 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-12">
         {featuredProjects.map((project, index) => (
           <motion.div
             key={project.id}
