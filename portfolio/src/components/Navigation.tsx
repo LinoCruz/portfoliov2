@@ -32,6 +32,7 @@ export function Navigation({ currentPage, onPageChange, language, onLanguageChan
   };
 
   const businessButtonText = t(navigationTranslations, 'businessAutomation', language);
+  const businessButtonTextDesktop = t(navigationTranslations, 'businessAutomationDesktop', language);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border/50">
@@ -48,13 +49,14 @@ export function Navigation({ currentPage, onPageChange, language, onLanguageChan
           </div>
 
           {/* Right Side - Business Solutions Button and Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1 md:space-x-4">
             {/* Business Solutions Button */}
             <Button
               onClick={() => onPageChange(currentPage === 'automation' ? 'home' : 'automation')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 neon-glow px-4 py-2"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 neon-glow px-2 py-2 md:px-4 text-xs md:text-sm"
             >
-              {businessButtonText}
+              <span className="md:hidden">{businessButtonText}</span>
+              <span className="hidden md:inline">{businessButtonTextDesktop}</span>
             </Button>
 
             {/* Theme Toggle */}

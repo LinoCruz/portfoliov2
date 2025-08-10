@@ -14,15 +14,20 @@ export const LanguageSwitch = React.memo(({ language, onLanguageChange }: Langua
     onLanguageChange(newLanguage);
   };
 
+  const getLanguageText = () => {
+    return language === 'en' ? 'ENG' : 'ESP';
+  };
+
   return (
     <Button
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="p-2 hover:bg-muted/50 flex items-center space-x-1"
+      className="p-1.5 md:p-2 hover:bg-muted/50 flex items-center space-x-1"
     >
-      <Languages className="h-4 w-4" />
-      <span className="text-xs uppercase">{language}</span>
+      <Languages className="h-4 w-4 hidden md:block" />
+      <span className="text-xs uppercase md:hidden">{getLanguageText()}</span>
+      <span className="text-xs uppercase hidden md:inline">{language}</span>
     </Button>
   );
 });

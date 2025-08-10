@@ -94,6 +94,10 @@ export const projectsTranslations: Translations = {
 // Navigation Translations
 export const navigationTranslations: Translations = {
   businessAutomation: {
+    en: 'For Businesses',
+    es: 'Para Empresas'
+  },
+  businessAutomationDesktop: {
     en: 'Business Automation',
     es: 'Automatización de Negocios'
   },
