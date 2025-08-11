@@ -5,72 +5,72 @@ import { Badge } from '../ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
 import { Play, Eye, Clock, Youtube, ChevronRight } from 'lucide-react';
 
-// Mock video data - replace with real data
+// Real video data from LinoDataNerd YouTube channel
 const videos = [
   {
     id: 1,
-    title: 'Building a Full-Stack React Application',
-    description: 'Complete tutorial series covering React, Node.js, and MongoDB integration with authentication and deployment.',
-    thumbnail: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500&h=280&fit=crop',
-    duration: '2:45:30',
-    views: '15.2K',
-    category: 'React',
-    youtubeUrl: 'https://youtube.com/watch?v=example1',
+    title: 'Clase 1 - Instalar Python, Anaconda y Visual Studio Code - VSC (2021)',
+    description: 'Tutorial completo para instalar Python, Anaconda y Visual Studio Code. Perfecto para principiantes que quieren empezar con Python.',
+    thumbnail: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=500&h=280&fit=crop',
+    duration: '7:06',
+    views: '20K',
+    category: 'Python',
+    youtubeUrl: 'https://www.youtube.com/watch?v=bEoWzqs6IaY',
     featured: true
   },
   {
     id: 2,
-    title: 'Advanced TypeScript Patterns',
-    description: 'Deep dive into advanced TypeScript concepts including generics, utility types, and design patterns.',
-    thumbnail: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500&h=280&fit=crop',
-    duration: '1:32:15',
-    views: '8.7K',
-    category: 'TypeScript',
-    youtubeUrl: 'https://youtube.com/watch?v=example2',
+    title: 'Presentaciones en R Markdown [FÁCIL, 2021]: Con código R, formato .HTML, y publicación en RPUB',
+    description: 'Aprende a crear presentaciones profesionales usando R Markdown con código R integrado y publicación web.',
+    thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=280&fit=crop',
+    duration: '12:11',
+    views: '9.6K',
+    category: 'R',
+    youtubeUrl: 'https://www.youtube.com/watch?v=KIZI2U2UNog',
     featured: true
   },
   {
     id: 3,
-    title: 'Docker for Developers',
-    description: 'Comprehensive guide to containerizing applications with Docker, including multi-stage builds and orchestration.',
-    thumbnail: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=500&h=280&fit=crop',
-    duration: '58:42',
-    views: '12.1K',
-    category: 'DevOps',
-    youtubeUrl: 'https://youtube.com/watch?v=example3',
+    title: 'Taller Ggplot2 en RStudio - PARTE 1',
+    description: 'Workshop completo sobre ggplot2, la librería más poderosa para visualización de datos en R. Primera parte de la serie.',
+    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=280&fit=crop',
+    duration: '1:18:00',
+    views: '246',
+    category: 'R',
+    youtubeUrl: 'https://www.youtube.com/watch?v=5SgSe9CtKjw',
     featured: true
   },
   {
     id: 4,
-    title: 'API Design Best Practices',
-    description: 'Learn how to design scalable and maintainable REST APIs with proper documentation and testing.',
-    thumbnail: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=280&fit=crop',
-    duration: '45:20',
-    views: '6.3K',
-    category: 'Backend',
-    youtubeUrl: 'https://youtube.com/watch?v=example4',
+    title: 'UN MAPA CON PYTHON [FÁCIL]: El Mapa del Perú con Datos del Covid-19 (2021)',
+    description: 'Tutorial paso a paso para crear mapas interactivos con Python usando datos del Covid-19 en Perú.',
+    thumbnail: 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=500&h=280&fit=crop',
+    duration: '12:23',
+    views: '991',
+    category: 'Python',
+    youtubeUrl: 'https://www.youtube.com/watch?v=EUyyEsVQcfQ',
     featured: false
   },
   {
     id: 5,
-    title: 'CSS Grid & Flexbox Mastery',
-    description: 'Master modern CSS layout techniques with practical examples and responsive design patterns.',
-    thumbnail: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=500&h=280&fit=crop',
-    duration: '1:15:30',
-    views: '9.8K',
-    category: 'CSS',
-    youtubeUrl: 'https://youtube.com/watch?v=example5',
+    title: 'Usar R [Parte 01]: Variables, Operaciones Matemáticas Básicas, Comentarios, Paquetes y Librerías',
+    description: 'Fundamentos de R: aprende sobre variables, operaciones matemáticas, comentarios y manejo de paquetes.',
+    thumbnail: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=500&h=280&fit=crop',
+    duration: '9:14',
+    views: '639',
+    category: 'R',
+    youtubeUrl: 'https://www.youtube.com/watch?v=LG0SScfocq8',
     featured: false
   },
   {
     id: 6,
-    title: 'JavaScript Performance Optimization',
-    description: 'Techniques for optimizing JavaScript performance including memory management and code splitting.',
-    thumbnail: 'https://images.unsplash.com/photo-1607706189992-eae578626c86?w=500&h=280&fit=crop',
-    duration: '52:15',
-    views: '11.4K',
-    category: 'JavaScript',
-    youtubeUrl: 'https://youtube.com/watch?v=example6',
+    title: 'Clase 02 - Conociendo el Entorno de R y RStudio (2021)[Personalizar, Scripts y Proyectos]',
+    description: 'Guía completa del entorno de RStudio: personalización, manejo de scripts y creación de proyectos.',
+    thumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=280&fit=crop',
+    duration: '6:16',
+    views: '411',
+    category: 'R',
+    youtubeUrl: 'https://www.youtube.com/watch?v=d9Q5Et_4ZhI',
     featured: false
   }
 ];
@@ -231,11 +231,15 @@ export function VideosSection({ language }: VideosSectionProps) {
         className="text-center mt-12"
       >
         <Button 
+          asChild
           size="lg"
           className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          {text.seeMore}
-          <ChevronRight className="w-5 h-5 ml-2" />
+          <a href="https://www.youtube.com/@LinoDataNerd" target="_blank" rel="noopener noreferrer">
+            <Youtube className="w-5 h-5 mr-2" />
+            {text.seeMore}
+            <ChevronRight className="w-5 h-5 ml-2" />
+          </a>
         </Button>
       </motion.div>
     </section>

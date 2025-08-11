@@ -130,23 +130,30 @@ export function ContactSection({ language }: ContactSectionProps) {
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Resume Preview Image */}
-              <div className="relative group cursor-pointer">
-                <div className="aspect-[3/4] bg-gradient-to-br from-card to-muted rounded-lg overflow-hidden border border-border/50">
-                  <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=600&fit=crop"
-                    alt="Resume Preview"
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="mb-1">Senior Full-Stack Developer</h3>
-                    <p className="text-sm opacity-90">3+ Years Experience • 50+ Projects</p>
-                  </div>
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Download className="w-8 h-8 text-white" />
+              <a 
+                href="https://drive.google.com/file/d/1qT1Ck5R1NEebfCXjeTb4gibKMMbWOJw1/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="relative group cursor-pointer">
+                  <div className="aspect-[3/2] bg-gradient-to-br from-card to-muted rounded-lg overflow-hidden border border-border/50">
+                    <ImageWithFallback
+                      src="public/developer-adn-cv.png"
+                      alt="Resume Preview"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="mb-1">Senior Full-Stack Developer</h3>
+                      <p className="text-sm opacity-90">3+ Years Experience • 50+ Projects</p>
+                    </div>
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Download className="w-8 h-8 text-white" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Resume Highlights */}
               <div className="grid grid-cols-2 gap-4 text-center">

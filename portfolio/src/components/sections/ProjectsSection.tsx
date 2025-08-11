@@ -95,7 +95,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
         className="text-center"
       >
         <Button variant="outline" asChild className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/LinoCruz" target="_blank" rel="noopener noreferrer">
             <Github className="w-4 h-4 mr-2" />
             {t(projectsTranslations, 'viewAllGithub', language)}
           </a>
