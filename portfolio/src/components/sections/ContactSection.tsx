@@ -174,7 +174,7 @@ export function ContactSection({ language }: ContactSectionProps) {
                 size="lg" 
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90 neon-glow"
               >
-                <a href="/resume.pdf" download="YourName_Resume.pdf">
+                <a href="https://drive.google.com/file/d/1qT1Ck5R1NEebfCXjeTb4gibKMMbWOJw1/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                   <Download className="w-5 h-5 mr-2" />
                   {text.downloadResume}
                 </a>

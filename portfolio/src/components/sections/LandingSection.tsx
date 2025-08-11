@@ -92,7 +92,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
         title: 'Soy Lino',
         description: 'Soy ingeniero de IA. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar.\n\nCreo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
         viewProjects: 'Ver Proyectos',
-        getResume: 'Obtener mi CV',
+        getResume: 'Ver mi CV',
         development: 'Desarrollo',
         developmentDesc: 'Soluciones full-stack con tecnologías modernas',
         education: 'Tutoriales',
