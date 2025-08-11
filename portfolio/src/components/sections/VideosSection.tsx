@@ -55,7 +55,7 @@ const videos = [
     id: 5,
     title: 'Usar R [Parte 01]: Variables, Operaciones Matemáticas Básicas, Comentarios, Paquetes y Librerías',
     description: 'Fundamentos de R: aprende sobre variables, operaciones matemáticas, comentarios y manejo de paquetes.',
-    thumbnail: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=500&h=280&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=500&h=280&fit=crop',
     duration: '9:14',
     views: '639',
     category: 'R',
