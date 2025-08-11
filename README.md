@@ -14,9 +14,19 @@ I'm a Computer Scientist turned AI Engineer with expertise in:
 
 My mission is to bridge the gap between advanced AI technology and practical business applications, helping organizations transform their operations through intelligent automation.
 
-## Portfolio Features
+## Portfolio Identity & Features
 
-## Portfolio Features
+This portfolio is more than just a showcase of technical skills, it's a reflection of my values and vision for the future. You'll notice that green is the dominant color throughout the design. While it happens to be my favorite color, there's a deeper meaning behind this choice. Green represents my commitment to environmental conservation, particularly my dedication to protecting the Amazonian rainforest in Peru. As a developer, I believe we have a responsibility that extends beyond code and algorithms.
+
+The design integrates subtle animations that reflect my passion for software development, each transition and interaction is crafted to demonstrate the artistry possible in modern web development. These details show that even in technical work, there's room for creativity and personal expression. You'll find that while I'm deeply passionate about programming and AI, I'm equally committed to being a responsible global citizen.
+
+**My personal final thought:**
+In our current era of rapid AI advancement, I believe we must face this technological revolution 'head on not' with resistance, but with intelligence and intentionality. Our role as developers and engineers is to thoughtfully shape how AI evolves, ensuring it serves humanity's best interests rather than becoming a destructive force. This portfolio represents my approach: using cutting-edge technology while staying grounded in human values and environmental consciousness.
+
+I hope you enjoy exploring my work and perhaps find inspiration in this blend of technical innovation and social responsibility.
+
+
+### Portfolio Features
 
 - 🎨 Modern design with dark/light theme support
 - 🌍 Multi-language support (English/Spanish)
@@ -28,7 +38,7 @@ My mission is to bridge the gap between advanced AI technology and practical bus
 - 💼 Showcases AI projects and automation solutions
 - 🤖 Highlights technical expertise and business impact
 
-## What You'll Find Here
+### What You'll Find Here
 
 - **AI & Automation Projects**: Real-world solutions I've built for businesses
 - **Technical Case Studies**: Deep dives into complex AI implementations
@@ -36,7 +46,7 @@ My mission is to bridge the gap between advanced AI technology and practical bus
 - **Professional Experience**: My journey from Computer Science to AI Engineering
 - **Contact Information**: Let's discuss how AI can benefit your business
 
-## Tech Stack
+### Tech Stack
 
 - **Frontend Framework**: React 18
 - **Language**: TypeScript
@@ -46,16 +56,16 @@ My mission is to bridge the gap between advanced AI technology and practical bus
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 
-## Getting Started - Run Locally
+### Getting Started - Run Locally
 
 Want to explore the code behind this portfolio? Follow these steps to run it on your local machine:
 
-### Prerequisites
+#### Prerequisites
 
 - Node.js (version 16 or higher)
 - npm or yarn
 
-### Installation
+#### Installation
 
 1. Clone the repository
 ```bash
@@ -75,7 +85,7 @@ npm run dev
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Available Scripts
+#### Available Scripts
 
 - `npm run dev` - Start the development server
 - `npm run build` - Build for production
