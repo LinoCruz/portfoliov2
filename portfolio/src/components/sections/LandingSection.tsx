@@ -90,7 +90,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
       return {
         greeting: '¡Saludos!',
         title: 'Soy Lino',
-        description: 'Soy ingeniero de IA. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar.\n\nCreo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
+        description: 'Soy ingeniero de software. Diseño soluciones innovadoras y sistemas automatizados que ayudan a las empresas a escalar.\n\nCreo que la IA, bien aplicada, mejora la eficiencia, amplía oportunidades de crecimiento y acelera el logro de objetivos.',
         viewProjects: 'Ver Proyectos',
         getResume: 'Ver mi CV',
         development: 'Desarrollo',
@@ -104,7 +104,7 @@ export function LandingSection({ onSectionChange, language }: LandingSectionProp
     return {
       greeting: "Hi there!",
       title: "I'm Lino",
-      description: 'I\'m an AI engineer. I design innovative solutions and automated systems that help companies scale.\n\nI believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
+      description: 'I\'m an Software engineer. I design innovative solutions and automated systems that help companies scale.\n\nI believe that, when applied well, AI improves efficiency, expands opportunities for growth, and accelerates goal achievement.',
       viewProjects: 'View Projects',
       getResume: 'Get My Resume',
       development: 'Development',

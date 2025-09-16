@@ -20,8 +20,7 @@ interface ContactSectionProps {
 export function ContactSection({ language }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    message: ''
+    message: 'Hi, I am ..., I want to know more about your services and work.'
   });
 
   const getText = () => {
@@ -77,10 +76,17 @@ export function ContactSection({ language }: ContactSectionProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    const whatsappNumber = '51943476578'; // Your WhatsApp number with country code
+    // If the message is still the default, insert the user's name
+    let messageText = formData.message;
+    const defaultMsg = 'Hi, I am ..., I want to know more about your services and work.';
+    if (messageText === defaultMsg && formData.name.trim()) {
+      messageText = `Hi, I am ${formData.name}, I want to know more about your services and work.`;
+    }
+    const message = `Name: ${formData.name}\nMessage: ${messageText}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    setFormData({ name: '', message: defaultMsg });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -139,7 +145,7 @@ export function ContactSection({ language }: ContactSectionProps) {
                 <div className="relative group cursor-pointer">
                   <div className="aspect-[3/2] bg-gradient-to-br from-card to-muted rounded-lg overflow-hidden border border-border/50">
                     <ImageWithFallback
-                      src="public/developer-adn-cv.png"
+                      src="/developer-adn-cv.png"
                       alt="Resume Preview"
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                     />
@@ -224,50 +230,39 @@ export function ContactSection({ language }: ContactSectionProps) {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Lino Cruz"
+                    placeholder="Your Name"
                     required
                     className="mt-2"
                   />
                 </div>
-                
-                <div>
-                  <Label htmlFor="email">{text.emailAddress}</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="linoeduardocd@gmail.com"
-                    required
-                    className="mt-2"
-                  />
-                </div>
-                
                 <div>
                   <Label htmlFor="message">{text.message}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
-                    onChange={handleChange}
-                    placeholder={text.messagePlaceholder}
+                    onChange={e => {
+                      if (e.target.value.length <= 100) {
+                        handleChange(e);
+                      }
+                    }}
+                    placeholder="Hi, I am ..., I want to know more about your services and work."
                     required
-                    rows={8}
+                    rows={4}
+                    maxLength={100}
                     className="mt-2"
                   />
+                  <div className="text-xs text-muted-foreground mt-1 text-right">{formData.message.length}/100</div>
                 </div>
-                
                 <Button 
                   type="submit" 
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90 neon-glow"
                   size="lg"
                 >
                   <Send className="w-4 h-4 mr-2" />
-                  {text.sendBtn}
+                  Send via WhatsApp
                 </Button>
               </form>
-
               {/* Quick Response Promise */}
               <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
                 <h4 className="text-primary mb-2">{text.responseGuarantee}</h4>

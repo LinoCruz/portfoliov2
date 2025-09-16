@@ -9,6 +9,7 @@ import { useLanguage } from './hooks/useLanguage';
 import { useScrollTo } from './hooks/useScrollTo';
 import { useActiveSection } from './hooks/useActiveSection';
 import { footerTranslations, t } from './utils/i18n';
+import { GithubIcon } from './components/common/GithubIcon';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -96,6 +97,18 @@ export default function App() {
             <p className="text-muted-foreground text-sm">
               {footerText.built}
             </p>
+            <div className="flex justify-center items-center mt-4 gap-2">
+              <a
+                href="https://github.com/LinoCruz/portfoliov2"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View portfolio source on GitHub"
+                className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors"
+              >
+                <GithubIcon className="w-5 h-5 mr-1" />
+                <span className="text-xs">Source on GitHub</span>
+              </a>
+            </div>
             <p className="text-muted-foreground text-xs mt-2">
               © 2024 Lino Cruz. {footerText.rights}
             </p>
