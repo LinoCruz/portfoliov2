@@ -2,6 +2,8 @@
 
 Welcome to my personal portfolio! I'm an AI Engineer passionate about creating intelligent solutions that automate business processes and drive innovation. With a strong foundation in Computer Science, I specialize in developing cutting-edge AI systems that help businesses optimize their operations, reduce costs, and scale efficiently.
 
+Visit here: https://linocruz.github.io/portfoliov2/
+
 ## About Me
 
 I'm a Computer Scientist turned AI Engineer with expertise in:
