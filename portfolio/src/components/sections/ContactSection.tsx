@@ -145,7 +145,7 @@ export function ContactSection({ language }: ContactSectionProps) {
                 <div className="relative group cursor-pointer">
                   <div className="aspect-[3/2] bg-gradient-to-br from-card to-muted rounded-lg overflow-hidden border border-border/50">
                     <ImageWithFallback
-                      src="/developer-adn-cv.png"
+                      src="https://i.ibb.co/RGfH1Zr1/developer-adn-cv.png"
                       alt="Resume Preview"
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                     />
